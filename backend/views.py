@@ -56,6 +56,10 @@ def get_hotels(request):
                 'telephone': hotelBasicInfo.get('telephoneNo'),
                 'address': hotelBasicInfo.get('address1', '') + hotelBasicInfo.get('address2', ''),
                 'URL': hotelBasicInfo.get('hotelInformationUrl'),
+                'hotelImageUrl': hotelBasicInfo.get('hotelImageUrl'),
+                'hotelThumbnailUrl':hotelBasicInfo.get('hotelThumbnailUrl'),
+                'roomImageUrl': hotelBasicInfo.get('roomImageUrl'),
+                'roomThumbnailUrl': hotelBasicInfo.get('roomThumbnailUrl'),
             }
 
             # 各ホテルの情報を 'hotel' キーで追加
