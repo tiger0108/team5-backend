@@ -1,20 +1,8 @@
-# from django.shortcuts import render
-# from rest_framework import status
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-
-# class SampleAPIView(APIView):
-
-#     def get(self, request):
-#         return Response("OK", status=status.HTTP_200_OK)
-
-# Create your views here.
-
 import requests
 import json
 from django.http import JsonResponse
 from django.shortcuts import render
-from .tools import haversine  # haversine関数を使用する場合はインポート
+from .tools import haversine
 
 user_latitude = 35.0
 user_longitude = 140.0
@@ -24,7 +12,7 @@ def get_hotels(request):
     api_url = 'https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426'
 
     # 楽天APIキー
-    api_key = '1029895826722862188'  # APIキーを正しく設定
+    api_key = '1029895826722862188'  # 自分のAPIキー
 
     params = {
         'format': 'json',
@@ -64,7 +52,7 @@ def get_hotels(request):
                 'hotelName': hotelBasicInfo.get('hotelName'),
                 'hotelLatitude': hotelBasicInfo.get('latitude'),
                 'hotelLongitude': hotelBasicInfo.get('longitude'),
-                'distance': distance,  # 追加: 距離を含める
+                'distance': distance, 
                 'telephone': hotelBasicInfo.get('telephoneNo'),
                 'address': hotelBasicInfo.get('address1', '') + hotelBasicInfo.get('address2', ''),
                 'URL': hotelBasicInfo.get('hotelInformationUrl'),
